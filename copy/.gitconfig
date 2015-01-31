@@ -1,0 +1,14 @@
+[user]
+  name = Gunnar Wagenknecht
+[core]
+  autocrlf = input
+  whitespace = fix,space-before-tab,tab-in-indent,trailing-space
+  excludesfile = ~/.gitignore_global
+[apply]
+  whitespace = fix
+[branch]
+  autosetuprebase = always
+[branch "master"]
+  remote = origin
+  merge = refs/heads/master
+  rebase = true

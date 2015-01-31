@@ -1,0 +1,45 @@
+# OS generated files
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db 
+Desktop.ini
+
+# Compiled source
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages 
+# (git has its own built in compression methods)
+*.7z
+*.jar
+*.rar
+*.zip
+*.gz
+*.bzip
+*.xz
+*.lzma
+*.iso
+*.tar
+*.dmg
+*.xpi
+*.gem
+*.egg
+*.deb
+*.rpm
+
+# Log files 
+*.log
+
+# Vim
+.swp
+.swo
+.*.swp
+.*.swo
