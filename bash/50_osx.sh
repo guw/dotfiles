@@ -13,3 +13,7 @@ export PATH
 # Start ScreenSaver. This will lock the screen if locking is enabled.
 #alias ss="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
 
+# Bash Completion from Homebrew
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi

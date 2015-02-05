@@ -10,7 +10,7 @@ is_osx || return 1
 recipes=(
   ansible
   bash
-  bash-completions
+  bash-completion
   cowsay
   git
   git-extras
