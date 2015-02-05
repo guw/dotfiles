@@ -6,6 +6,7 @@
 .Trashes
 *.swp
 *.lock
+*.old
 
 # ignore backups
 /caches/
