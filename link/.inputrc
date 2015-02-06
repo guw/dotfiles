@@ -1,0 +1,10 @@
+# support typing command and using arrow keys to search through history
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+# ignore case on completion
+set completion-ignore-case on
+
+# enable a menu
+set show-all-if-ambiguous on
+TAB: menu-complete

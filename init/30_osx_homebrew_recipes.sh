@@ -6,11 +6,15 @@ is_osx || return 1
 # Exit if Homebrew is not installed.
 [[ ! "$(type -P brew)" ]] && e_error "Brew recipes need Homebrew to install." && return 1
 
+# Ensure the kegs are installed.
+kegs=(homebrew/versions)
+brew_tap_kegs
+
 # Homebrew recipes
 recipes=(
   ansible
   bash
-  bash-completion
+  bash-completion2
   cowsay
   git
   git-extras

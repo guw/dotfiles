@@ -153,7 +153,7 @@ defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 # Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 0
+defaults write NSGlobalDomain KeyRepeat -int 1
 
 
 ###############################################################################
@@ -654,7 +654,7 @@ defaults write com.google.Chrome.canary DisablePrintPreview -bool true
 ###############################################################################
 
 # Install Sublime Text settings
-cp -r $DOTFILES/conf/osx/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings 2> /dev/null
+cp -r $DOTFILES/conf/osx/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings 2> /dev/null
 
 
 ###############################################################################
