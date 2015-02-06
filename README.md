@@ -103,7 +103,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/guw/dotfiles/master/bin/
 ```
 
 ## Aliases and Functions
-To keep things easy, the `~/.bashrc` and `~/.bash_profile` files are extremely simple, and should never need to be modified. Instead, add your aliases, functions, settings, etc into one of the files in the `bash` subdirectory, or add a new file. They're all automatically sourced when a new shell is opened. Take a look, I have [a lot of aliases and functions](source). I even have a [fancy prompt](source/50_prompt.sh) that shows the current directory, time and current git/svn repo status.
+To keep things easy, the `~/.bashrc` and `~/.profile` files are extremely simple, and should never need to be modified. Instead, add your aliases, functions, settings, etc into one of the files in the `bash` or `zsh` subdirectory, or add a new file. They're all automatically sourced when a new shell is opened. Take a look, I have [a lot of aliases and functions](bash). My [fancy prompt](bash/50_prompt.sh) is based on Liquibase which shows things like git/svn repo and Mac battery/load status.
 
 ## Scripts
 In addition to the aforementioned [dotfiles][dotfiles] script, there are a few other [bin scripts](bin).

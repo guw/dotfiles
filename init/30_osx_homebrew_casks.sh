@@ -7,7 +7,7 @@ is_osx || return 1
 [[ ! "$(type -P brew)" ]] && e_error "Brew casks need Homebrew to install." && return 1
 
 # Ensure the cask keg and recipe are installed.
-kegs=(caskroom/cask)
+kegs=(caskroom/cask caskroom/versions)
 brew_tap_kegs
 recipes=(brew-cask)
 brew_install_recipes
@@ -26,16 +26,17 @@ casks=(
   chronosync
   dropbox
   google-drive
+  hipchat
   istat-menus
   iterm2
   java
-  macvim
+  java7
   omnidisksweeper
   path-finder
   picasa
   skype
   sourcetree
-  sublime-text
+  sublime-text3
   totalfinder
   vagrant
   vmware-fusion

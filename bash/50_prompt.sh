@@ -6,3 +6,6 @@ if is_osx && [ -f $(brew --prefix)/share/liquidprompt ]; then
 elif [ -f ~/liquidprompt ]; then
   . ~/liquidprompt
 fi
+
+# Something for orientation
+alias cls='clear;echo "Logged in at $(tty), as $(whoami) in $(pwd)."'
