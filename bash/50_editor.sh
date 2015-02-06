@@ -3,7 +3,7 @@
 # Editing
 
 if [[ ! "$SSH_TTY" ]] && is_osx; then
-  export EDITOR='subl'
+  export EDITOR='subl -n -w'
 else
   export EDITOR='vim'
 fi
