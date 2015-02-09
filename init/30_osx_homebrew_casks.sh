@@ -24,7 +24,9 @@ casks=(
   # Applications
   bettertouchtool
   chronosync
+  cloudytabs
   dropbox
+  #google-chrome ## -> need to install manuall, otherwise 1 password ext fails
   google-drive
   hipchat
   istat-menus
