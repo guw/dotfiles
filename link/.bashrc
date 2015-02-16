@@ -22,4 +22,8 @@ function dotfiles() {
   $DOTFILES/bin/dotfiles "$@" && src
 }
 
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+# Source all failes
 src
