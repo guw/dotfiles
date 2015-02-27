@@ -29,10 +29,10 @@ casks=(
   #google-chrome ## -> need to install manuall, otherwise 1 password ext fails
   google-drive
   hipchat
-  istat-menus
   iterm2
   java
   java7
+  menumeters
   omnidisksweeper
   path-finder
   picasa
