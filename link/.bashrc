@@ -25,5 +25,5 @@ function dotfiles() {
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# Source all failes
+# Source all files
 src
