@@ -55,12 +55,3 @@ if (( ${#packages[@]} > 0 )); then
     sudo apt-get -qq install "$package"
   done
 fi
-
-# Install Git Extras
-if [[ ! "$(type -P git-extras)" ]]; then
-  e_header "Installing Git Extras"
-  (
-    cd $DOTFILES/vendor/git-extras &&
-    sudo make install
-  )
-fi
