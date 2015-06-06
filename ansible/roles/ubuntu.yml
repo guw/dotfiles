@@ -10,13 +10,14 @@
   remote_user: root
   vars:
     user: "{{ lookup('env', 'USER') }}"
-    password: "$6$Som3S@lt$bJOg1GmsbFaHHH1pGTaduyC4QYyGekpniRZKMRxFtzhg.RSH5.s3awqVxZWcV/sWFZ8Ss2K0QclwNQlJXsZH31" # 'test'
+  vars_prompt:
+    password: "Please enter a password for the remote user to create/set"
   tasks:
     - name: update/upgrade apt
       apt: upgrade=dist update_cache=yes
 
     - name: add primary user
-      user: name={{ user }} shell=/bin/bash groups=sudo append=yes password={{ password }}
+      user: name={{ user }} shell=/bin/bash groups=sudo append=yes password={{ password | password_hash('sha512') }}
 
     - name: upload primary user ssh public key
       authorized_key: user={{ user }} key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
