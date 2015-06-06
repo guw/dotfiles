@@ -13,12 +13,12 @@
 		".Spotlight-V100",
 		".Trashes"
 	],
+	"find_selected_text": true,
 	"folder_exclude_patterns":
 	[
 		".git",
 		"node_modules"
 	],
-	"find_selected_text": true,
 	"highlight_modified_tabs": true,
 	"hot_exit": false,
 	"ignored_packages":
@@ -39,5 +39,5 @@
 	"tab_size": 2,
 	"translate_tabs_to_spaces": false,
 	"trim_trailing_white_space_on_save": true,
-	"word_wrap": true,
+	"word_wrap": true
 }
