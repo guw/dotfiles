@@ -23,6 +23,7 @@ brew cask info this-is-somewhat-annoying 2>/dev/null
 casks=(
   # Applications
   bettertouchtool
+  burn
   chronosync
   cloudytabs
   dropbox
