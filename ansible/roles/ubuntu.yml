@@ -35,6 +35,9 @@
     - name: Install fail2ban
       apt: pkg=fail2ban state=present
 
+    - name: Install curl
+      apt: pkg=curl state=present
+
   handlers:
     - name: reload ssh
       service: name=ssh state=restarted
