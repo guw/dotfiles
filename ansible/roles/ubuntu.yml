@@ -11,13 +11,18 @@
   vars:
     user: "{{ lookup('env', 'USER') }}"
   vars_prompt:
-    password: "Please enter a password for the remote user to create/set"
+    - name: "password"
+      prompt: "password for the remote user to set (when user does not exist yet)"
+      private: yes
+      encrypt: "sha512_crypt" # need to have python-passlib installed in local machine before we can use it ('pip install passlib')
+      confirm: yes
+      salt_size: 7
   tasks:
     - name: update/upgrade apt
       apt: upgrade=dist update_cache=yes
 
     - name: add primary user
-      user: name={{ user }} shell=/bin/bash groups=sudo append=yes password={{ password | password_hash('sha512') }}
+      user: name={{ user }} shell=/bin/bash groups=sudo append=yes password={{ password }}
 
     - name: upload primary user ssh public key
       authorized_key: user={{ user }} key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
