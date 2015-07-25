@@ -23,7 +23,7 @@
       authorized_key: user={{ user }} key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
 
     - name: disable root ssh login, disallow password authentication (and other sshd_config tweaks)
-      lineinfile: dest=/etc/ssh/sshd_config state={{ item.state }} line="{{ item.line }}" regex="{{ item.regex }}"
+      lineinfile: dest=/etc/ssh/sshd_config state={{ item.state }} line="{{ item.line }}" regexp="{{ item.regexp }}"
       with_items:
         - { state: present, line: "PermitRootLogin no", regexp: "^PermitRootLogin" }
         - { state: present, line: "PasswordAuthentication no", regexp: "^PasswordAuthentication" }
