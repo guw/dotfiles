@@ -4,7 +4,7 @@
 is_ubuntu || return 1
 
 # Install / Update Liquibase
-LIQUIDPROMPT= ~/.liquidprompt
+LIQUIDPROMPT=~/.liquidprompt
 if [[ ! -d $LIQUIDPROMPT ]]; then
   # $LIQUIDPROMPT directory doesn't exist? Clone it!
   e_header "Downloading liquidprompt"
@@ -12,8 +12,8 @@ if [[ ! -d $LIQUIDPROMPT ]]; then
 else
   # Make sure we have the latest files.
   e_header "Updating liquidprompt"
-  pushd $LIQUIDPROMPT
+  pushd $LIQUIDPROMPT >/dev/null
   git pull
   git submodule update --init --recursive --quiet
-  popd
+  popd >/dev/null
 fi
