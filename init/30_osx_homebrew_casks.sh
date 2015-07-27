@@ -26,6 +26,7 @@ casks=(
   burn
   chronosync
   cloudytabs
+  cyberduck
   dropbox
   #google-chrome ## -> need to install manuall, otherwise 1 password ext fails
   google-drive
@@ -37,6 +38,7 @@ casks=(
   omnidisksweeper
   path-finder
   picasa
+  sequel-pro
   skype
   sourcetree
   sublime-text3
