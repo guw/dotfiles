@@ -38,23 +38,26 @@ set background=dark
 set cursorline " Highlight current line
 set number " Enable line numbers.
 set showtabline=2 " Always show tab bar.
-set relativenumber " Use relative line numbers. Current line is still in status bar.
+"set relativenumber " Use relative line numbers. Current line is still in status bar.
 set title " Show the filename in the window titlebar.
 set nowrap " Do not wrap lines.
 set noshowmode " Don't show the current mode (airline.vim takes care of us)
 set laststatus=2 " Always show status line
 
 " Toggle between absolute and relative line numbers
-augroup relative_numbers
-  autocmd!
-  " Show absolute numbers in insert mode
-  autocmd InsertEnter * :set norelativenumber
-  autocmd InsertLeave * :set relativenumber
-augroup END
+"augroup relative_numbers
+"  autocmd!
+"  " Show absolute numbers in insert mode
+"  autocmd InsertEnter * :set norelativenumber
+"  autocmd InsertLeave * :set relativenumber
+"augroup END
 
 " Make it obvious where 80 characters is
 set textwidth=80
 set colorcolumn=+1
+
+" But do not reformat existing lines
+set formatoptions-=t
 
 " Scrolling
 set scrolloff=3 " Start scrolling three lines before horizontal border of window.
