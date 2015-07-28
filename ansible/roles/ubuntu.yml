@@ -37,6 +37,9 @@
       notify:
         - reload ssh
 
+    - name: Enable SSH Agent forwarding for sudo
+      lineinfile: dest=/etc/sudoers state=present insertafter='^Defaults' line='Defaults	env_keep+=SSH_AUTH_SOCK' validate='visudo -cf %s'
+
     - name: Install packages
       apt: "pkg={{ item }} state=present"
       with_items:
