@@ -51,6 +51,18 @@ function get_os() {
   done
 }
 
+# Remote SSH detection
+function is_ssh() {
+	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+	  return 0
+	else
+	  case $(ps -o comm= -p $PPID) in
+	    sshd|*/sshd) return 0;;
+	  esac
+	fi
+	return 1
+}
+
 # Remove an entry from $PATH
 # Based on http://stackoverflow.com/a/2108540/142339
 function path_remove() {
