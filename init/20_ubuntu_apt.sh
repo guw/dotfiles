@@ -46,6 +46,7 @@ packages=(
   nmap
   tree
   bash-completion
+  mosh
 )
 
 packages=($(setdiff "${packages[*]}" "$(dpkg --get-selections | grep -v deinstall | awk '{print $1}')"))

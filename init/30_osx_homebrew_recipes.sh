@@ -24,6 +24,7 @@ recipes=(
   liquidprompt
   man2html
   mackup
+  mosh
   nmap
   ssh-copy-id
   terminal-notifier
