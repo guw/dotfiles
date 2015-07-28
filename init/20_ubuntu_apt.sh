@@ -47,6 +47,7 @@ packages=(
   tree
   bash-completion
   mosh
+  vim
 )
 
 packages=($(setdiff "${packages[*]}" "$(dpkg --get-selections | grep -v deinstall | awk '{print $1}')"))
