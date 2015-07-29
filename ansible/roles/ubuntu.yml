@@ -73,7 +73,8 @@
       lineinfile:
         dest: /root/.bashrc
         state: present
-        line: '[ -x /usr/bin/mail ] && echo -e "Host: `hostname -f`\\n`date`\\n\\nWho:\\n`who`" | mail -s "ALERT - Root Shell Access on `hostname -f` from `who | cut -d"(" -f2 | cut -d")" -f1`" root'
+        line: '[ -x /usr/bin/mail ] && echo -e "Host: `hostname -f`\\n`date`\\n\\nWho:\\n`who`" | mail -s "ALERT - Root Shell Access on `hostname -f` from `who | cut -d"(" -f2 | cut -d")" -f1 | tr "\n" " "`" root'
+        regexp: 'Root Shell Access'
 
   handlers:
     - name: reload ssh
