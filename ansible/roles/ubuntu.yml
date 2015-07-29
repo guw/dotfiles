@@ -45,6 +45,35 @@
       with_items:
         - curl
         - fail2ban
+        - mosh
+
+    - name: copy mosh-allow-ufw script
+      copy: >
+        src=mosh-allow-ufw
+        dest=/usr/local/bin/mosh-allow-ufw
+        owner=root
+        group=root
+        mode=0755
+
+    - name: ensure mosh-allow-ufw script is triggerd from user's bashrc
+      lineinfile: >
+        dest=/home/{{ user }}/.bashrc
+        line="sudo /usr/local/bin/mosh-allow-ufw"
+        regexp='mosh-allow-ufw'
+        state=present
+
+    - name: ensure mosh-allow-ufw script can be called by user without sudo password
+      lineinfile: >
+        dest=/etc/sudoers
+        line="{{ user }} ALL=(ALL:ALL) NOPASSWD: /usr/local/bin/mosh-allow-ufw"
+        regexp='mosh-allow-ufw'
+        state=present
+
+    - name: sent mail on root login
+      lineinfile:
+        dest: /root/.bashrc
+        state: present
+        line: '[ -x /usr/bin/mail ] && echo -e "Host: `hostname -f`\\n`date`\\n\\nWho:\\n`who`" | mail -s "ALERT - Root Shell Access on `hostname -f` from `who | cut -d"(" -f2 | cut -d")" -f1`" root'
 
   handlers:
     - name: reload ssh
