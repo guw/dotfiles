@@ -55,12 +55,17 @@
         group=root
         mode=0755
 
-    - name: ensure mosh-allow-ufw script is triggerd from user's bashrc
+    - name: check if .dotfiles already installed
+      stat: path=/home/{{ user }}/.bashrc
+      register: user_bashrc
+
+    - name: ensure mosh-allow-ufw script is triggerd from user's bashrc (if not already setuo via dotfiles)
       lineinfile: >
         dest=/home/{{ user }}/.bashrc
         line="sudo /usr/local/bin/mosh-allow-ufw"
         regexp='mosh-allow-ufw'
         state=present
+      when: user_bashrc.stat.islnk is defined and user_bashrc.stat.islnk == False
 
     - name: ensure mosh-allow-ufw script can be called by user without sudo password
       lineinfile: >
@@ -73,8 +78,8 @@
       lineinfile:
         dest: /root/.bashrc
         state: present
-        line: '[ -x /usr/bin/mail ] && echo -e "Host: `hostname -f`\\n`date`\\n\\nWho:\\n`who`" | mail -s "ALERT - Root Shell Access on `hostname -f` from `who | cut -d"(" -f2 | cut -d")" -f1 | tr "\n" " "`" root'
-        regexp: 'Root Shell Access'
+        line: '[ -x /usr/bin/mail ] && echo -e "Host: `hostname -f`\\n`date`\\n\\nWho:\\n`who`" | mail -s "ALERT - Root Shell Access on `hostname -f` from `who | cut -d"(" -f2 | cut -d")" -f1 | tr "\\n" " "`" root'
+        regexp: ^\[\ \-x\ \/usr\/bin\/mail\ \]
 
   handlers:
     - name: reload ssh
