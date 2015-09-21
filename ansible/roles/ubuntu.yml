@@ -38,7 +38,12 @@
         - reload ssh
 
     - name: Enable SSH Agent forwarding for sudo
-      lineinfile: dest=/etc/sudoers state=present insertafter='^Defaults' line='Defaults	env_keep+=SSH_AUTH_SOCK' validate='visudo -cf %s'
+      lineinfile: >
+        dest=/etc/sudoers
+        state=present
+        insertafter='^Defaults'
+        line='Defaults	env_keep+=SSH_AUTH_SOCK'
+        validate='visudo -cf %s'
 
     - name: Install packages
       apt: "pkg={{ item }} state=present"
@@ -59,7 +64,7 @@
       stat: path=/home/{{ user }}/.bashrc
       register: user_bashrc
 
-    - name: ensure mosh-allow-ufw script is triggerd from user's bashrc (if not already setuo via dotfiles)
+    - name: ensure mosh-allow-ufw script is triggerd from user's bashrc (if not already setup via dotfiles)
       lineinfile: >
         dest=/home/{{ user }}/.bashrc
         line="sudo /usr/local/bin/mosh-allow-ufw"
@@ -69,10 +74,21 @@
 
     - name: ensure mosh-allow-ufw script can be called by user without sudo password
       lineinfile: >
-        dest=/etc/sudoers
+        dest=/etc/sudoers.d/mosh
         line="{{ user }} ALL=(ALL:ALL) NOPASSWD: /usr/local/bin/mosh-allow-ufw"
-        regexp='mosh-allow-ufw'
+        owner=root
+        group=root
+        mode=0440
+        create=yes
         state=present
+        validate='visudo -cf %s'
+
+    - name: ensure sudoers includes sudoers.d
+      lineinfile: >
+        dest=/etc/sudoers
+        line="#includedir /etc/sudoers.d"
+        state=present
+        validate='visudo -cf %s'
 
     - name: sent mail on root login
       lineinfile:
