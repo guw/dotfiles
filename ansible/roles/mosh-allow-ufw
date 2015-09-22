@@ -5,7 +5,7 @@
 #
 
 # only if ufw is installed
-[ -x /usr/sbin/ufw ] || return
+[ -x /usr/sbin/ufw ] || exit
 
 # Load active ports
 PORTS=`lsof -i | grep mosh-serv | cut -f2 -d":"`

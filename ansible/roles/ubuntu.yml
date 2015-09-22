@@ -2,7 +2,7 @@
 #
 # Usage:
 #
-# 1. $ ansible-playbook ansible/roles/ubuntu.yml -i aaa.bbb.ccc.ddd,
+# 1. $ ansible-playbook ansible/roles/ubuntu.yml -i aaa.bbb.ccc.ddd, --ask-pass
 # 2. $ ssh aaa.bbb.ccc.ddd
 # 3. Install dotfiles!
 ---
@@ -51,6 +51,25 @@
         - curl
         - fail2ban
         - mosh
+        - unattended-upgrades
+
+    - name: enable automatic security updates
+      copy: >
+        src=20auto-upgrades
+        dest=/etc/apt/apt.conf.d/20auto-upgrades
+        owner=root
+        group=root
+        mode=0644
+
+    - name: check if /etc/cron.daily/apt.disabled exists
+      stat: path=/etc/cron.daily/apt.disabled
+      register: daily_apt_disabled
+
+    - name: fix disabled daily apt cron
+      command: >
+        mv /etc/cron.daily/apt.disabled /etc/cron.daily/apt
+        creates=/etc/cron.daily/apt
+      when: daily_apt_disabled.stat.exists
 
     - name: copy mosh-allow-ufw script
       copy: >
