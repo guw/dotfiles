@@ -26,7 +26,8 @@ casks=(
   burn
   chronosync
   cloudytabs
-  cyberduck
+  commander-one
+  #cyberduck
   dropbox
   #google-chrome ## -> need to install manuall, otherwise 1 password ext fails
   google-drive
@@ -36,13 +37,11 @@ casks=(
   java7
   menumeters
   omnidisksweeper
-  path-finder
   picasa
   sequel-pro
   skype
   sourcetree
   sublime-text3
-  totalfinder
   vagrant
   vmware-fusion
   # Quick Look plugins
