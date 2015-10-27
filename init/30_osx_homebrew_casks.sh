@@ -29,6 +29,7 @@ casks=(
   commander-one
   #cyberduck
   dropbox
+  flux
   #google-chrome ## -> need to install manuall, otherwise 1 password ext fails
   google-drive
   hipchat
