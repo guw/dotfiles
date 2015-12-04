@@ -32,7 +32,6 @@ casks=(
   flux
   #google-chrome ## -> need to install manuall, otherwise 1 password ext fails
   google-drive
-  hipchat
   iterm2
   java
   java7
@@ -44,7 +43,9 @@ casks=(
   sourcetree
   sublime-text3
   vagrant
-  vmware-fusion
+  #vmware-fusion ## -> vmware fusion policy sucks, going to El Capitan requires to buy 8 because of USB issues
+  virtualbox
+  virtualbox-extension-pack
   # Quick Look plugins
   betterzipql
   qlcolorcode
