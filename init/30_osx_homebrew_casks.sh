@@ -28,6 +28,7 @@ casks=(
   cloudytabs
   commander-one
   #cyberduck
+  dockertoolbox
   dropbox
   flux
   #google-chrome ## -> need to install manuall, otherwise 1 password ext fails

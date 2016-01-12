@@ -16,6 +16,7 @@ recipes=(
   bash
   bash-completion2
   cowsay
+  docker
   git
   git-extras
   htop-osx
