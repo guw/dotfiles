@@ -15,6 +15,7 @@ recipes=(
   ansible
   bash
   bash-completion2
+  brew-gem
   cowsay
   docker
   git
