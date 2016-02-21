@@ -22,3 +22,6 @@ fi
 
 # Disable ansible cows }:]
 export ANSIBLE_NOCOWS=1
+
+# geek weather for terminal
+alias weather='curl -4 wttr.in/Vancouver'
