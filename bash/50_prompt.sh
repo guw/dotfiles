@@ -19,3 +19,5 @@ fi
 # Something for orientation
 alias cls='clear;echo "Logged in at $(tty), as $(whoami) in $(pwd)."'
 
+# make mash flush to the history immediately
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
