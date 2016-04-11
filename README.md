@@ -31,7 +31,6 @@ On subsequent runs, step 1 is skipped, step 2 just updates the already-existing 
 * The `/conf` directory just exists. If a config file doesn't **need** to go in `~/`, reference it from the `/conf` directory.
 * The `/bash` directory contains files that are sourced whenever a new bash shell is opened (in alphanumeric order, hence the funky names).
 * The `/test` directory contains unit tests for especially complicated bash functions.
-* The `/zsh` directory contains files that are sourced whenever a new zsh shell is opened (in alphanumeric order, hence the funky names).
 * The `/vendor` directory contains third-party libraries.
 
 ### The "copy" step
@@ -103,7 +102,10 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/guw/dotfiles/master/bin/
 ```
 
 ## Aliases and Functions
-To keep things easy, the `~/.bashrc` and `~/.profile` files are extremely simple, and should never need to be modified. Instead, add your aliases, functions, settings, etc into one of the files in the `bash` or `zsh` subdirectory, or add a new file. They're all automatically sourced when a new shell is opened. Take a look, I have [a lot of aliases and functions](bash). My [fancy prompt](bash/50_prompt.sh) is based on Liquibase which shows things like git/svn repo and Mac battery/load status.
+To keep things easy, the `~/.bashrc` and `~/.profile` files are extremely simple, and should never need to be modified. Instead, add your aliases, functions, settings, etc into one of the files in the `bash` subdirectory, or add a new file. They're all automatically sourced when a new shell is opened. Take a look, I have [a lot of aliases and functions](bash). My [fancy prompt](bash/50_prompt.sh) is based on Liquibase which shows things like git/svn repo and Mac battery/load status.
+
+## Private Exports
+Should you ever want to create private exports, the `~/.profile` file is intentionally not linked but copied. Feel free to add any sensitive export to that file.
 
 ## Scripts
 In addition to the aforementioned [dotfiles][dotfiles] script, there are a few other [bin scripts](bin).
