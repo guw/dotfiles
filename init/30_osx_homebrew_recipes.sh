@@ -28,11 +28,10 @@ recipes=(
   mackup
   mosh
   nmap
+  python
   ssh-copy-id
   terminal-notifier
   tree
-  zsh
-  zsh-completions
 )
 
 brew_install_recipes
