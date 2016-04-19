@@ -19,9 +19,7 @@ if [[ "$TERM" != screen && "$ITERM_SHELL_INTEGRATION_INSTALLED" = "" && "$-" == 
   ITERM_SHELL_INTEGRATION_INSTALLED=Yes
   # Saved copy of your PS1. This is used to detect if the user changes PS1
   # directly. ITERM_PREV_PS1 will hold the last value that this script set PS1 to
-  # (including various custom escape sequences). ITERM_ORIG_PS1 always holds the last
-  # user-set value of PS1.
-  ITERM_ORIG_PS1="$PS1"
+  # (including various custom escape sequences).
   ITERM_PREV_PS1="$PS1"
 
   # This variable describes whether we are currently in "interactive mode";
@@ -57,7 +55,7 @@ if [[ "$TERM" != screen && "$ITERM_SHELL_INTEGRATION_INSTALLED" = "" && "$-" == 
       set -o functrace > /dev/null 2>&1
       shopt -s extdebug > /dev/null 2>&1
 
-      local s=$?
+      \local s=$?
       last_hist_ent="$(\history 1)";
       precmd;
       # This is an iTerm2 addition to try to work around a problem in the
@@ -78,13 +76,28 @@ if [[ "$TERM" != screen && "$ITERM_SHELL_INTEGRATION_INSTALLED" = "" && "$-" == 
       # this point ITERM_PREEXEC_INTERACTIVE_MODE is still the empty string, so preexec
       # won't produce output for command substitutions.
 
+      # The first time this is called ITERM_ORIG_PS1 is unset. This tests if the variable
+      # is undefined (not just empty) and initializes it. We can't initialize this at the
+      # top of the script because it breaks with liquidprompt. liquidprompt wants to
+      # set PS1 from a PROMPT_COMMAND that runs just before us. Setting ITERM_ORIG_PS1
+      # at the top of the script will overwrite liquidprompt's PS1, whose value would
+      # never make it into ITERM_ORIG_PS1. Issue 4532. It's important to check
+      # if it's undefined before checking if it's empty because some users have
+      # bash set to error out on referencing an undefined variable.
+      if [ -z "${ITERM_ORIG_PS1+xxx}" ]
+      then
+        # ITERM_ORIG_PS1 always holds the last user-set value of PS1.
+        # You only get here on the first time iterm2_preexec_invoke_cmd is called.
+        export ITERM_ORIG_PS1="$PS1"
+      fi
+
       if [[ "$PS1" != "$ITERM_PREV_PS1" ]]
       then
         export ITERM_ORIG_PS1="$PS1"
       fi
 
       # Get the value of the prompt prefix, which will change $?
-      local iterm2_prompt_prefix_value="$(iterm2_prompt_prefix)"
+      \local iterm2_prompt_prefix_value="$(iterm2_prompt_prefix)"
 
       # Reset $? to its saved value, which might be used in $ITERM_ORIG_PS1.
       sh -c "exit $s"
@@ -154,12 +167,12 @@ if [[ "$TERM" != screen && "$ITERM_SHELL_INTEGRATION_INSTALLED" = "" && "$-" == 
       # auxf | less" will show up with both sides of the pipe if we use history,
       # but only as "ps auxf" if not.
       hist_ent="$(\history 1)";
-      local prev_hist_ent="${last_hist_ent}";
+      \local prev_hist_ent="${last_hist_ent}";
       last_hist_ent="${hist_ent}";
       if [[ "${prev_hist_ent}" != "${hist_ent}" ]]; then
-          local this_command="$(echo "${hist_ent}" | sed -e "s/^[ ]*[0-9]*[ ]*//g")";
+          \local this_command="$(echo "${hist_ent}" | sed -e "s/^[ ]*[0-9]*[ ]*//g")";
       else
-          local this_command="";
+          \local this_command="";
       fi;
 
       # If none of the previous checks have earlied out of this function, then
@@ -196,8 +209,13 @@ if [[ "$TERM" != screen && "$ITERM_SHELL_INTEGRATION_INSTALLED" = "" && "$-" == 
     iterm2_begin_osc
     printf "133;C;"
     iterm2_end_osc
-    # Reset PS1 back to its original value so scripts can change it.
-    export PS1="$ITERM_ORIG_PS1"
+    # If PS1 still has the value we set it to in iterm2_preexec_invoke_cmd then
+    # restore it to its original value. It might have changed if you have
+    # another PROMPT_COMMAND (like liquidprompt) that modifies PS1.
+    if [ -n "${ITERM_ORIG_PS1+xxx}" -a "$PS1" = "$ITERM_PREV_PS1" ]
+    then
+      export PS1="$ITERM_ORIG_PS1"
+    fi
     iterm2_ran_preexec="yes"
   }
 
