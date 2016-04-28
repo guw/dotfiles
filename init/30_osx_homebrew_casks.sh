@@ -28,8 +28,8 @@ casks=(
   cloudytabs
   commander-one
   #cyberduck
-  dockertoolbox
-  dropbox
+  #dockertoolbox  ## -> Docker.app Mac beta
+  devonthink-pro-office
   flux
   #google-chrome ## -> need to install manuall, otherwise 1 password ext fails
   google-drive
@@ -38,7 +38,6 @@ casks=(
   java7
   yujitach-menumeters
   omnidisksweeper
-  picasa
   sequel-pro
   skype
   sourcetree

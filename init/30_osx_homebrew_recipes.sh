@@ -7,7 +7,7 @@ is_osx || return 1
 [[ ! "$(type -P brew)" ]] && e_error "Brew recipes need Homebrew to install." && return 1
 
 # Ensure the kegs are installed.
-kegs=(homebrew/versions)
+kegs=(homebrew/versions homebrew/completions)
 brew_tap_kegs
 
 # Homebrew recipes
@@ -17,7 +17,6 @@ recipes=(
   bash-completion2
   brew-gem
   cowsay
-  docker
   git
   git-extras
   htop-osx
@@ -26,12 +25,16 @@ recipes=(
   liquidprompt
   man2html
   mackup
+  maven
   mosh
   nmap
   python
   ssh-copy-id
   terminal-notifier
   tree
+  docker-completion
+  maven-completion
+  vagrant-completion
 )
 
 brew_install_recipes
