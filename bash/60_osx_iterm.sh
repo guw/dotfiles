@@ -1,9 +1,6 @@
 #!/bin/bash
 # This is based on "preexec.bash" but is customized for iTerm2.
 
-# OSX-only stuff. Abort if not OSX.
-is_osx || return 1
-
 # Note: this module requires 2 bash features which you must not otherwise be
 # using: the "DEBUG" trap, and the "PROMPT_COMMAND" variable.  iterm2_preexec_install
 # will override these and if you override one or the other this _will_ break.
@@ -56,7 +53,7 @@ if [[ "$TERM" != screen && "$ITERM_SHELL_INTEGRATION_INSTALLED" = "" && "$-" == 
       shopt -s extdebug > /dev/null 2>&1
 
       \local s=$?
-      last_hist_ent="$(\history 1)";
+      last_hist_ent="$(HISTTIMEFORMAT= builtin history 1)";
       precmd;
       # This is an iTerm2 addition to try to work around a problem in the
       # original preexec.bash.
@@ -166,7 +163,7 @@ if [[ "$TERM" != screen && "$ITERM_SHELL_INTEGRATION_INSTALLED" = "" && "$-" == 
       # variable, but using history here is better in some ways: for example, "ps
       # auxf | less" will show up with both sides of the pipe if we use history,
       # but only as "ps auxf" if not.
-      hist_ent="$(\history 1)";
+      hist_ent="$(HISTTIMEFORMAT= builtin history 1)";
       \local prev_hist_ent="${last_hist_ent}";
       last_hist_ent="${hist_ent}";
       if [[ "${prev_hist_ent}" != "${hist_ent}" ]]; then
@@ -278,7 +275,7 @@ if [[ "$TERM" != screen && "$ITERM_SHELL_INTEGRATION_INSTALLED" = "" && "$-" == 
 
   function iterm2_print_version_number() {
     iterm2_begin_osc
-    printf "1337;ShellIntegrationVersion=1"
+    printf "1337;ShellIntegrationVersion=2;shell=bash"
     iterm2_end_osc
   }
 
