@@ -36,7 +36,7 @@ casks=(
   iterm2
   java
   java7
-  menumeters
+  yujitach-menumeters
   omnidisksweeper
   picasa
   sequel-pro
