@@ -635,6 +635,15 @@ cp -r $DOTFILES/conf/osx/Preferences.sublime-settings ~/Library/Application\ Sup
 
 
 ###############################################################################
+# SSH                                                                         #
+###############################################################################
+
+# Install ssh-add -A plist to auto-populate  SSH agent with keys from keychain on Sierra
+# https://github.com/jirsbek/SSH-keys-in-macOS-Sierra-keychain
+cp $DOTFILES/conf/osx/ssh.add.a.plist ~/Library/LaunchAgents/ 2> /dev/null
+
+
+###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
