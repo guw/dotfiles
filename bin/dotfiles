@@ -45,11 +45,11 @@ function is_osx() {
 function is_ubuntu() {
   [[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]] || return 1
 }
-function is_raspian() {
+function is_raspbian() {
   [[ "$(cat /etc/issue 2> /dev/null)" =~ Raspbian ]] || return 1
 }
 function get_os() {
-  for os in osx ubuntu raspian; do
+  for os in osx ubuntu raspbian; do
     is_$os; [[ $? == ${1:-0} ]] && echo $os
   done
 }

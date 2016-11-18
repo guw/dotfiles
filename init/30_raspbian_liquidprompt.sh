@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# Raspian-only stuff. Abort if not Raspian.
-is_raspian || return 1
+# Raspbian-only stuff. Abort if not Raspbian.
+is_raspbian || return 1
 
 # Install / Update Liquibase
 LIQUIDPROMPT=~/.liquidprompt

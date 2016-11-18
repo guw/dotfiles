@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# Raspian-only stuff. Abort if not Raspian.
-is_raspian || return 1
+# Raspbian-only stuff. Abort if not Raspbian.
+is_raspbian || return 1
 
 # If the old files isn't removed, the duplicate APT alias will break sudo!
 sudoers_old="/etc/sudoers.d/sudoers-cowboy"; [[ -e "$sudoers_old" ]] && sudo rm "$sudoers_old"
