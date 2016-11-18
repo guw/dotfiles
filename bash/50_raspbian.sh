@@ -1,6 +1,9 @@
 # Raspbian-only stuff. Abort if not Raspbian.
 is_raspbian || return 1
 
+# Fix language not properly set on Raspbian
+export LC_ALL=C
+
 # Package management
 alias update="sudo apt-get -qq update && sudo apt-get upgrade"
 alias install="sudo apt-get install"
