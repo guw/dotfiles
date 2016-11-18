@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# Ubuntu-only stuff. Abort if not Ubuntu.
-is_ubuntu || is_raspian || return 1
+# Raspian-only stuff. Abort if not Raspian.
+is_raspian || return 1
 
 # Install / Update Liquibase
 LIQUIDPROMPT=~/.liquidprompt
