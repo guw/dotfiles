@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then cat <<HELP
+Where Am I
+
+Usage: $(basename "$0")
+
+Idenifies the location based on coordinates.
+Requires LocateMe.
+HELP
+exit; fi
+
+# test if it LocateMe is available
+command -v LocateMe >/dev/null 2>&1 || { echo >&2 "I require LocateMe but it's not installed. Aborting."; exit 1; }
+
+# get coordinates
+latitude=$(LocateMe -l | awk '/Latitude: / {print $2}')
+longitude=$(LocateMe -l | awk '/Longitude: / {print $2}')
+
+# query Google for result
+response=$(curl -s "http://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&sensor=false")
+
+# parse out city and country
+locality=$(echo ${response} | jq -r '.results | .[0] | .address_components[] | select(.types==["locality","political"]) | .long_name')
+country=$(echo ${response} | jq -r '.results | .[0] | .address_components[] | select(.types==["country","political"]) | .short_name')
+
+# output
+if [[ "$1" == "--city" ]]; then
+        echo $locality
+elif [[ "$1" == "--country" ]]; then
+        echo $country
+else
+        printf "City: ${locality}\nCountry: ${country}"
+fi
