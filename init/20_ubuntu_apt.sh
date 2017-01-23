@@ -48,6 +48,8 @@ packages=(
   bash-completion
   mosh
   vim
+  screen
+  mc
 )
 
 packages=($(setdiff "${packages[*]}" "$(dpkg --get-selections | grep -v deinstall | awk '{print $1}')"))
