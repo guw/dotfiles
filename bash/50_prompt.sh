@@ -4,10 +4,10 @@
 if is_ssh; then
   PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: $(basename $PWD)\007"'
 else
-	PROMPT_COMMAND='echo -ne "\033]0;$(basename $PWD)\007"'
+  PROMPT_COMMAND='echo -ne "\033]0;$(basename $PWD)\007"'
 fi
 
-# On OSX, source Liquibase from homebrew
+# On OSX, source Liquid Prompt from homebrew
 if is_osx && [ -f $(brew --prefix)/share/liquidprompt ]; then
   . $(brew --prefix)/share/liquidprompt
 elif [ -f ~/.liquidprompt ]; then
