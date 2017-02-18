@@ -1,8 +1,11 @@
 # Basic Ubuntu machine setup.
 #
+# Note, since 16.04 Ubuntu no longer includes Python 2.x by default. Thus,
+# the --extra-vars options is used to force Ansible using Python 3.
+#
 # Usage:
 #
-# 1. $ ansible-playbook ansible/roles/ubuntu.yml -i aaa.bbb.ccc.ddd, --ask-pass
+# 1. $ ansible-playbook ansible/roles/ubuntu.yml -i aaa.bbb.ccc.ddd, --ask-pass --extra-vars "ansible_python_interpreter=/usr/bin/python3"
 # 2. $ ssh aaa.bbb.ccc.ddd
 # 3. Install dotfiles!
 ---
