@@ -32,6 +32,7 @@
       with_items:
         - { state: present, line: "PermitRootLogin no", regexp: "^PermitRootLogin" }
         - { state: present, line: "PasswordAuthentication no", regexp: "^PasswordAuthentication" }
+        - { state: present, line: "ChallengeResponseAuthentication no", regexp: "^ChallengeResponseAuthentication" }
         - { state: present, line: "UseDNS no", regexp: "^UseDNS" }
         - { state: present, line: "AllowUsers {{ user }}" ,regexp: "^AllowUsers" }
       notify:
@@ -93,8 +94,8 @@
 
     - name: ensure mosh-allow-ufw script can be called by user without sudo password
       lineinfile: >
-        dest=/etc/sudoers.d/mosh
-        line="{{ user }} ALL=(ALL:ALL) NOPASSWD: /usr/local/bin/mosh-allow-ufw"
+        dest=/etc/sudoers.d/90-mosh-{{ user }}
+        line="{{ user }} ALL=(root) NOPASSWD: /usr/local/bin/mosh-allow-ufw"
         owner=root
         group=root
         mode=0440
