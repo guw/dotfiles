@@ -5,14 +5,14 @@
 #
 # Usage:
 #
-# 1. $ ansible-playbook ansible/roles/ubuntu.yml -i aaa.bbb.ccc.ddd, --ask-pass --extra-vars "ansible_python_interpreter=/usr/bin/python3"
+# 1. $ ansible-playbook ansible/roles/ubuntu.yml -i aaa.bbb.ccc.ddd, --ask-pass --extra-vars "ansible_python_interpreter=/usr/bin/python3" --extra-vars "user_name=whatever"
 # 2. $ ssh aaa.bbb.ccc.ddd
 # 3. Install dotfiles!
 ---
 - hosts: all
   remote_user: root
   vars:
-    user: "{{ lookup('env', 'USER') }}"
+    user: "{{ user_name | default(lookup('env', 'USER')) }}"
   vars_prompt:
     - name: "password"
       prompt: "password for the remote user to set (when user does not exist yet)"
@@ -75,43 +75,9 @@
         creates=/etc/cron.daily/apt
       when: daily_apt_disabled.stat.exists
 
-    - name: copy mosh-allow-ufw script
-      copy: >
-        src=mosh-allow-ufw
-        dest=/usr/local/bin/mosh-allow-ufw
-        owner=root
-        group=root
-        mode=0755
-
     - name: check if .dotfiles already installed
       stat: path=/home/{{ user }}/.bashrc
       register: user_bashrc
-
-    - name: ensure mosh-allow-ufw script is triggerd from user's bashrc (if not already setup via dotfiles)
-      lineinfile: >
-        dest=/home/{{ user }}/.bashrc
-        line="sudo /usr/local/bin/mosh-allow-ufw"
-        regexp='mosh-allow-ufw'
-        state=present
-      when: user_bashrc.stat.islnk is defined and user_bashrc.stat.islnk == False
-
-    - name: ensure mosh-allow-ufw script can be called by user without sudo password
-      lineinfile: >
-        dest=/etc/sudoers.d/90-mosh-{{ user }}
-        line="{{ user }} ALL=(root) NOPASSWD: /usr/local/bin/mosh-allow-ufw"
-        owner=root
-        group=root
-        mode=0440
-        create=yes
-        state=present
-        validate='visudo -cf %s'
-
-    - name: ensure sudoers includes sudoers.d
-      lineinfile: >
-        dest=/etc/sudoers
-        line="#includedir /etc/sudoers.d"
-        state=present
-        validate='visudo -cf %s'
 
     - name: sent mail on root login
       lineinfile:
