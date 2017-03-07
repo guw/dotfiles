@@ -12,6 +12,9 @@
 /caches/
 /backups/
 
+# ignore Ansible retry files
+/ansible/roles/*.retry
+
 # Don't commit Vim plugins, vim-plug will install them.
 /link/.vim/plugged
 
