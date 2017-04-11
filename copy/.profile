@@ -21,3 +21,21 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+# source location specific profiles if they exists
+if [ -z "${LOCATION_COUNTRY}" ]; then
+  if [ -f "${HOME}/.profile_OTHER" ]; then
+    echo -e "\e[3mUnable to identify location. Falling back to defaults.\e[0m"
+    . "${HOME}/.profile_OTHER"
+  fi
+else
+        echo -e "Welcome to \e[1m${LOCATION_LOCALITY:-}\e[0m."
+  if [ -f "${HOME}/.profile_${LOCATION_LOCALITY_SHORT:-}" ]; then
+    . "${HOME}/.profile_${LOCATION_LOCALITY_SHORT:-}"
+  elif [ -f "${HOME}/.profile_${LOCATION_COUNTRY}_${LOCATION_STATE:-}" ]; then
+    . "${HOME}/.profile_${LOCATION_COUNTRY}_${LOCATION_STATE:-}"
+  elif [ -f "${HOME}/.profile_${LOCATION_COUNTRY}" ]; then
+    . "${HOME}/.profile_${LOCATION_COUNTRY}"
+  elif [ -f "${HOME}/.profile_OTHER" ]; then
+    . "${HOME}/.profile_OTHER"
+  fi
+fi

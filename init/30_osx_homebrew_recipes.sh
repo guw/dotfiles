@@ -23,6 +23,7 @@ recipes=(
   id3tool
   lesspipe
   liquidprompt
+  locateme
   man2html
   mackup
   maven
@@ -31,6 +32,7 @@ recipes=(
   python
   ssh-copy-id
   terminal-notifier
+  timelimit
   tree
   docker-completion
   maven-completion
