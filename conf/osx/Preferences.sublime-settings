@@ -1,4 +1,10 @@
 {
+  "binary_file_patterns": [
+    ".svn/",
+    ".git/",
+    "node_modules/",
+    "bower_components/"
+  ],
 	"default_encoding": "UTF-8",
 	"default_line_ending": "unix",
 	"detect_indentation": false,
@@ -14,11 +20,6 @@
 		".Trashes"
 	],
 	"find_selected_text": true,
-	"folder_exclude_patterns":
-	[
-		".git",
-		"node_modules"
-	],
 	"highlight_modified_tabs": true,
 	"hot_exit": false,
 	"ignored_packages":
