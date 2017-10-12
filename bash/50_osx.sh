@@ -3,7 +3,7 @@
 # OSX-only stuff. Abort if not OSX.
 is_osx || return 1
 
-# APPLE, Y U PUT /usr/bin B4 /usr/local/bin?!
+# APPLE, Y U PUT /usr/bin before /usr/local/bin?!
 PATH="/usr/local/bin:$(path_remove /usr/local/bin)"
 export PATH
 
@@ -15,3 +15,10 @@ export PATH
 
 # Java on OS X
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+
+# configure nvm if available
+nvmsh="$(brew --prefix nvm)/nvm.sh"
+if [ -f "$nvmsh" ] ; then
+  export NVM_DIR="$HOME/.nvm"
+  . "$nvmsh"
+fi
