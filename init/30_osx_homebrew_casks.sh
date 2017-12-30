@@ -29,13 +29,10 @@ casks=(
   commander-one
   #cyberduck
   #dockertoolbox  ## -> Docker.app Mac beta
-  devonthink-pro-office
-  flux
   #google-chrome ## -> need to install manuall, otherwise 1 password ext fails
   google-drive
   iterm2
   java
-  java7
   yujitach-menumeters
   omnidisksweeper
   sequel-pro
@@ -43,7 +40,6 @@ casks=(
   sourcetree
   sublime-text3
   vagrant
-  #vmware-fusion ## -> vmware fusion policy sucks, going to El Capitan requires to buy 8 because of USB issues
   virtualbox
   virtualbox-extension-pack
   # Quick Look plugins
