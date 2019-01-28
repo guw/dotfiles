@@ -3,6 +3,10 @@
 # OSX-only stuff. Abort if not OSX.
 is_osx || return 1
 
+# check if this should be skipped
+[ "${SKIP_LOCATEME}" == "yes" ] && return 1
+
+# check for API key
 if [ -z "${GEOCODE_API_KEY}" ]; then
   echo -e "\e[3mUnable to identify location. Please get an API key and export it as GEOCODE_API_KEY.\e[0m"
   return 1
