@@ -13,4 +13,8 @@
 [push]
   default = simple
 [pull]
-        rebase = true
+  rebase = true
+[credential]
+	helper = cache --timeout=86400
+[status]
+	submodulesummary = 1
