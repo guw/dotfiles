@@ -29,6 +29,7 @@ recipes=(
   maven
   mosh
   nmap
+  nvm
   python
   ssh-copy-id
   terminal-notifier

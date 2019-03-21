@@ -15,7 +15,7 @@ casks=(
   # Applications
   bettertouchtool
   burn
-  chronosync
+  #chronosync
   cloudytabs
   #commander-one
   #cyberduck
