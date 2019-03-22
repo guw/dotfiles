@@ -21,6 +21,7 @@ recipes=(
   git-extras
   htop-osx
   id3tool
+  jq
   lesspipe
   liquidprompt
   locateme
