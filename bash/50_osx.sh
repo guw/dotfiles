@@ -5,6 +5,7 @@ is_osx || return 1
 
 # APPLE, Y U PUT /usr/bin before /usr/local/bin?!
 PATH="/usr/local/bin:$(path_remove /usr/local/bin)"
+PATH="/usr/local/sbin:$(path_remove /usr/local/sbin)"
 export PATH
 
 # Make 'less' more.
