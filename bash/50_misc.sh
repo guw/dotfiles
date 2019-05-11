@@ -25,7 +25,13 @@ fi
 export ANSIBLE_NOCOWS=1
 
 # geek weather for terminal
-alias weather='curl -4 wttr.in/Vancouver'
+function weather()
+{
+    local defaultcity=${LOCATION_LOCALITY-Apolda}
+    local request="wttr.in/${1-$defaultcity}?${2-m1F}"
+    [ "$COLUMNS" -lt 125 ] && request+='n'
+    curl -H "Accept-Language: ${LANG%_*}" --compressed "$request"
+}
 
 # allow **/ globbing
 shopt -s globstar
