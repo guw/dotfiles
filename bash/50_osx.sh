@@ -14,6 +14,14 @@ export PATH
 # Start ScreenSaver. This will lock the screen if locking is enabled.
 #alias ss="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
 
+# Configure Bash completion from Homebrew
+if [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
+	export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+  source "/usr/local/etc/profile.d/bash_completion.sh"
+else
+  e_error "Homebrew's bash-completion@2 not installed (/usr/local/etc/profile.d/bash_completion.sh not found)"
+fi
+
 # Java on OS X
 export JAVA_HOME=$(/usr/libexec/java_home)
 
