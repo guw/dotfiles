@@ -14,18 +14,9 @@ brew cask info this-is-somewhat-annoying 2>/dev/null
 casks=(
   # Applications
   bettertouchtool
-  burn
-  #chronosync
   cloudytabs
-  #commander-one
-  #cyberduck
-  iterm2
-  java
-  yujitach-menumeters
   omnidisksweeper
-  #sequel-pro
-  #sourcetree
-  sublime-text3
+  sublime-text
   vagrant
   virtualbox
   virtualbox-extension-pack

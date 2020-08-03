@@ -21,6 +21,9 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+# Terminal English only
+export LANG="en_US.UTF-8"
+
 # source location specific profiles if they exists
 if [ -z "${LOCATION_COUNTRY}" ]; then
   if [ -f "${HOME}/.profile_OTHER" ]; then
