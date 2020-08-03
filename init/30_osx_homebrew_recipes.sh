@@ -31,7 +31,7 @@ recipes=(
   mosh
   nmap
   nvm
-  python
+  python3
   ssh-copy-id
   terminal-notifier
   timelimit
