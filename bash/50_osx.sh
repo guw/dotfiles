@@ -16,7 +16,7 @@ export PATH
 
 # Configure Bash completion from Homebrew
 if [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
-	export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+  export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
   source "/usr/local/etc/profile.d/bash_completion.sh"
 else
   e_error "Homebrew's bash-completion@2 not installed (/usr/local/etc/profile.d/bash_completion.sh not found)"
