@@ -1,11 +1,18 @@
 #!/usr/bin/env bash
-[[ "$1" == "source" ]] || \
 
-echo 'Dotfiles - Gunnar Wagenknecht - http://about.me/guw'
+# Where the magic happens.
+export DOTFILES=~/.dotfiles
 
-if [[ "$1" == "-h" || "$1" == "--help" ]]; then cat <<HELP
+displayUsageAndExit() {
+	cat <<HELP
+dotfiles
 
-Usage: $(basename "$0")
+Usage: $(basename "$0") [options]
+
+Options:
+  -e, --edit    Open dotfiles directory for editing
+  -h, --help    Show this help message and exit
+  -s, --source  Only source functions and environment, no installation
 
 See the README for documentation.
 https://github.com/guw/dotfiles
@@ -14,14 +21,34 @@ Copyright (c) 2015 Gunnar Wagenknecht and others
 Licensed under the MIT license.
 Based on work by "Cowboy" Ben Alman (http://benalman.com/).
 HELP
-exit; fi
+	exit
+}
 
-###########################################
-# GENERAL PURPOSE EXPORTED VARS / FUNCTIONS
-###########################################
+sourceOnly=""
+while test $# -gt 0; do
+	case "$1" in
+		"-h"|"--help")
+			displayUsageAndExit
+			;;
+		"-e"|"--edit")
+			exec "$EDITOR" "$DOTFILES"
+			exit
+			;;
+		"-s"|"--source")
+      # only setup environment and do not install stuff
+			sourceOnly=true
+			;;
+		*)
+			echo "Invalid option: $1"
+			displayUsageAndExit
+			;;
+	esac
+	shift
+done
 
-# Where the magic happens.
-export DOTFILES=~/.dotfiles
+[[ "$sourceOnly" == "true" ]] || \
+echo 'Dotfiles - Gunnar Wagenknecht - http://about.me/guw'
+
 
 # Logging stuff.
 function e_header()   { echo -e "\n\033[1m$@\033[0m"; }
@@ -172,7 +199,7 @@ function setdiff() {
 }
 
 # If this file was being sourced, exit now.
-[[ "$1" == "source" ]] && return
+[[ "$sourceOnly" == "true" ]] && return
 
 
 ###########################################

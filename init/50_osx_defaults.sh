@@ -15,12 +15,6 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # General UI/UX                                                               #
 ###############################################################################
 
-# Set computer name (as done via System Preferences → Sharing)
-#sudo scutil --set ComputerName "Gunnars Mac"
-#sudo scutil --set HostName "Gunnars-Mac"
-#sudo scutil --set LocalHostName "Gunnars-Mac"
-#sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Gunnars-Mac"
-
 # Set standby delay to 3 hours (default is 1 hour, 10 minutes)
 sudo pmset -a standbydelay 10800
 
@@ -312,6 +306,12 @@ defaults write com.apple.dock wvous-tl-modifier -int 0
 # Bottom left screen corner → Mission Control
 defaults write com.apple.dock wvous-bl-corner -int 2
 defaults write com.apple.dock wvous-bl-modifier -int 0
+# Top right screen corner → Display Sleep
+defaults write com.apple.dock wvous-tr-corner -int 3
+defaults write com.apple.dock wvous-tr-modifier -int 0
+# Bottom right screen corner → Desktop
+defaults write com.apple.dock wvous-br-corner -int 4
+defaults write com.apple.dock wvous-br-modifier -int 0
 
 
 ###############################################################################
@@ -379,13 +379,13 @@ sudo mdutil -E / > /dev/null
 
 
 ###############################################################################
-# Terminal & iTerm 2                                                          #
+# Terminal                                                                    #
 ###############################################################################
 
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
 
-# Use a modified version of the Solarized Dark theme by default in Terminal.app
+# Use my theme by default in Terminal.app
 osascript <<EOD
 
 tell application "Terminal"
@@ -393,7 +393,7 @@ tell application "Terminal"
 	local allOpenedWindows
 	local initialOpenedWindows
 	local windowID
-	set themeName to "Solarized Dark xterm-256color"
+	set themeName to "Gunnars"
 
 	(* Store the IDs of all the open terminal windows. *)
 	set initialOpenedWindows to id of every window
@@ -432,13 +432,6 @@ end tell
 
 EOD
 
-# Don’t display the annoying prompt when quitting iTerm
-defaults write com.googlecode.iterm2 PromptOnQuit -bool false
-defaults write com.googlecode.iterm2 QuitWhenAllWindowsClosed -bool true
-defaults write com.googlecode.iterm2 OnlyWhenMoreTabs -bool false
-
-# smart placement
-defaults write com.googlecode.iterm2 SmartPlacement -bool true
 
 
 ###############################################################################
@@ -518,7 +511,7 @@ cp -r $DOTFILES/conf/osx/Preferences.sublime-settings ~/Library/Application\ Sup
 
 for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
 	"Dock" "Finder" "Mail" "Messages" "Safari" "SizeUp" "SystemUIServer" \
-	"Terminal" "Transmission" "Twitter" "iCal"; do
+	"Transmission" "Twitter" "iCal"; do
 	killall "${app}" > /dev/null 2>&1
 done
 echo "Done. Note that some of these changes require a logout/restart to take effect."
