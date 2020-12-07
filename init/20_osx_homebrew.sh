@@ -46,17 +46,21 @@ function brew_install_casks() {
   if (( ${#casks[@]} > 0 )); then
     e_header "Installing Homebrew casks: ${casks[*]}"
     for cask in "${casks[@]}"; do
-      brew install --cask --appdir="/Applications" $cask
+      brew install --cask $cask
     done
   fi
 }
 
 # Ensure the kegs are installed.
-kegs=(homebrew/cask-fonts)
+kegs=(
+  homebrew/cask
+  homebrew/cask-fonts
+)
 brew_tap_kegs
 
 # Install casks
 casks=(
+  1password
   bettertouchtool
   #cloudytabs (broken)
   font-meslo-lg-nerd-font
@@ -76,7 +80,7 @@ recipes=(
   fish
   git
   git-extras
-  htop-osx
+  htop
   id3tool
   jq
   lesspipe
@@ -88,7 +92,6 @@ recipes=(
   mosh
   nmap
   nvm
-  python3
   ssh-copy-id
   starship
   terminal-notifier
