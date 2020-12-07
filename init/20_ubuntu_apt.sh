@@ -37,19 +37,20 @@ fi
 # Update APT.
 e_header "Updating APT"
 sudo apt-get -qq update
-sudo apt-get -qq dist-upgrade
+sudo apt-get -qq upgrade
 
 # Install APT packages.
 packages=(
+	fish
   git-core
   htop
-  nmap
-  tree
-  bash-completion
-  mosh
-  vim
-  screen
   mc
+  mosh
+  nmap
+  screen
+  snap
+  tree
+  vim
 )
 
 packages=($(setdiff "${packages[*]}" "$(dpkg --get-selections | grep -v deinstall | awk '{print $1}')"))
@@ -60,3 +61,21 @@ if (( ${#packages[@]} > 0 )); then
     sudo apt-get -qq install "$package"
   done
 fi
+
+# Install snaps
+e_header "Installing Snaps"
+snap install slack --classic
+snap install starship --classic
+snap install sublime-text --classic
+
+
+# Nerd Font for Fish
+if [[ ! -f "~/.local/share/fonts/Meslo LG S Regular Nerd Font Complete.ttf" ]]; then
+	e_header "Installing Meslo Nerd Font"
+  mkdir -p ~/.local/share/fonts
+	cd ~/.local/share/fonts && curl -fLo "Meslo LG S Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Meslo/S/Regular/complete/Meslo%20LG%20S%20Regular%20Nerd%20Font%20Complete.ttf
+	fc-cache -fv
+fi
+
+# set Fish as default shell
+chsh -s `which fish`

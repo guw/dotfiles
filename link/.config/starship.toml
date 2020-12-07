@@ -1,0 +1,7 @@
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+# Enable memory module
+[memory_usage]
+disabled = false
