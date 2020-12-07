@@ -1,3 +1,10 @@
+#!/bin/sh
+
+# OSX-only stuff. Abort if not OSX.
+is_osx || return 1
+
+mkdir -p ${HOME}/.ssh
+cat ${HOME}/.ssh/README-keychain-macOS <<EOF
 For macOS SSH support
 =====================
 
@@ -9,3 +16,5 @@ Host * (asterisk for all hosts or add specific host)
   AddKeysToAgent yes
   UseKeychain yes
   IdentityFile <key> (e.g. ~/.ssh/userKey)
+
+EOF
