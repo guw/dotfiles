@@ -63,6 +63,8 @@ casks=(
   1password
   bettertouchtool
   #cloudytabs (broken)
+  chronosync
+  chronoagent
   font-meslo-lg-nerd-font
   omnidisksweeper
   sublime-text

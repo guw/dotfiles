@@ -4,7 +4,7 @@
 is_osx || return 1
 
 mkdir -p ${HOME}/.ssh
-cat ${HOME}/.ssh/README-keychain-macOS <<EOF
+cat <<EOF > ${HOME}/.ssh/README-keychain-macOS
 For macOS SSH support
 =====================
 
