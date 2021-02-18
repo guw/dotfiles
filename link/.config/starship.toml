@@ -1,7 +1,16 @@
-# Disable the package module, hiding it from the prompt completely
+# Disable git
+[git]
+disabled = true
+
+# Disable the package module
 [package]
 disabled = true
 
 # Enable memory module
 [memory_usage]
+disabled = false
+symbol = " "
+
+# Enable status module
+[status]
 disabled = false
