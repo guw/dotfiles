@@ -1,3 +1,5 @@
 configstore/
 htop/
 jgit/
+fish/fish_variables
+__pycache__/
