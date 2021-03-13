@@ -7,6 +7,11 @@ else
     echo "Starship prompt (https://starship.rs/) isn't installed. Check dotfiles setup."
 end
 
+# thefuck setup
+if command -sq thefuck
+    thefuck --alias | source
+end
+
 # Editor
 if command -sq subl
     set -x EDITOR "subl -n -w"
@@ -15,13 +20,7 @@ else
 end
 set -x VISUAL $EDITOR
 
-# Some aliases for easier archiving
-abbr tgz 'tar -cvvzf'
-abbr tbz2 'tar -cvvjf'
-abbr utgz 'tar -xvvzf'
-abbr utbz2 'tar -xvvjf'
-abbr mktar 'tar -cvvf'
-abbr untar 'tar -xvvf'
+
 
 # setup
 function _setup_fishenv
@@ -50,7 +49,3 @@ if test -e $fish_individual_config
   source $fish_individual_config
 end
 
-# thefuck alias
-if command -sq thefuck
-    thefuck --alias | source
-end
