@@ -31,16 +31,14 @@ function _setup_fishenv
   end
 
   # fisherman
+  #   plugins:
+  #     jethrokuan/z jorgebucaran/nvm.fish
+  #   theme
+  #     IlanCosman/tide
   curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
 
-  # plugins
-  fisher install jethrokuan/z jorgebucaran/nvm.fish
-
-  # theme
-  #fisher install IlanCosman/tide
-
-  # tpm
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  # everything should be there already
+  fisher update
 end
 
 # local overrides
