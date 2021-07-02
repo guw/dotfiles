@@ -60,23 +60,23 @@ brew_tap_kegs
 
 # Install casks
 casks=(
-  1password
-  bettertouchtool
+  #1password (install manually)
+  #bettertouchtool (installs old version?)
   #cloudytabs (broken)
-  chronosync
-  chronoagent
+  #chronosync
+  #chronoagent
   font-meslo-lg-nerd-font
   omnidisksweeper
   sublime-text
-  vagrant
-  virtualbox
-  virtualbox-extension-pack
+  #vagrant
+  #virtualbox
+  #virtualbox-extension-pack
 )
 brew_install_casks
 
 # Install recipes
 recipes=(
-  ansible
+  #ansible
   brew-gem
   cowsay
   fish
@@ -91,7 +91,7 @@ recipes=(
   man2html
   mackup
   maven
-  mosh
+  #mosh
   nmap
   nvm
   ssh-copy-id
