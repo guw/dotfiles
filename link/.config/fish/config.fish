@@ -30,15 +30,18 @@ function _setup_fishenv
       brew install $packages terminal-notifier
   end
 
-  # fisherman
+  # fisher
   #   plugins:
-  #     jethrokuan/z jorgebucaran/nvm.fish
+  #     jorgebucaran/fisher jethrokuan/z jorgebucaran/nvm.fish
   #   theme
   #     IlanCosman/tide
-  curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
+  curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 
   # everything should be there already
-  fisher update
+  fisher install jethrokuan/z
+  fisher install jorgebucaran/nvm.fish
+  fisher install edc/bass
+  fisher oh-my-fish/plugin-foreign-env
 end
 
 # local overrides

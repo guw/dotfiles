@@ -1,0 +1,17 @@
+fish_variables
+
+# Fisher plug-ins (must be installed manually)
+fish_plugins
+completions/bass*
+completions/fisher*
+completions/nvm*
+conf.d/bass*
+conf.d/fisher*
+conf.d/nvm*
+conf.d/z*
+functions/_*
+functions/bass*
+functions/fenv*
+functions/fisher*
+functions/nvm*
+functions/z*

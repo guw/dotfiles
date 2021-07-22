@@ -1,7 +1,3 @@
-# Disable git
-[git]
-disabled = true
-
 # Disable the package module
 [package]
 disabled = true
