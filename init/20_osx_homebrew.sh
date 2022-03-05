@@ -41,17 +41,6 @@ function brew_install_recipes() {
   fi
 }
 
-# Install Homebrew recipes.
-function brew_install_casks() {
-  casks=($(setdiff "${casks[*]}" "$(brew list --cask)"))
-  if (( ${#casks[@]} > 0 )); then
-    e_header "Installing Homebrew casks: ${casks[*]}"
-    for cask in "${casks[@]}"; do
-      brew install --cask $cask
-    done
-  fi
-}
-
 # Ensure the kegs are installed.
 kegs=(
   homebrew/cask
@@ -59,28 +48,13 @@ kegs=(
 )
 brew_tap_kegs
 
-# Install casks
-casks=(
-  #1password (install manually)
-  #bettertouchtool (installs old version?)
-  #cloudytabs (broken)
-  #chronosync
-  #chronoagent
-  font-meslo-lg-nerd-font
-  omnidisksweeper
-  sublime-text
-  #vagrant
-  #virtualbox
-  #virtualbox-extension-pack
-)
-brew_install_casks
-
 # Install recipes
 recipes=(
   #ansible
   brew-gem
   cowsay
   fish
+  font-meslo-lg-nerd-font
   git
   git-extras
   htop
@@ -92,11 +66,14 @@ recipes=(
   man2html
   mackup
   maven
+  menumeters
   #mosh
   nmap
   nvm
+  omnidisksweeper
   ssh-copy-id
   starship
+  sublime-text
   terminal-notifier
   timelimit
 )
