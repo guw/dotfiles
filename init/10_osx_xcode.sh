@@ -4,8 +4,7 @@
 is_osx || return 1
 
 # Some tools look for XCode, even though they don't need it.
-# https://github.com/joyent/node/issues/3681
-# https://github.com/mxcl/homebrew/issues/10245
+# https://github.com/guw/dotfiles#os-x-notes
 if [[ ! -d "$('xcode-select' -print-path 2>/dev/null)" ]]; then
-  sudo xcode-select -switch /usr/bin
+  sudo xcode-select -switch /Library/Developer/CommandLineTools
 fi

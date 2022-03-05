@@ -1,4 +1,9 @@
 
+# Homebrew path on macOS
+if test -f /opt/homebrew/bin/brew
+  eval (/opt/homebrew/bin/brew shellenv)
+end
+
 
 # Starship prompt
 if command -sq starship
@@ -7,10 +12,6 @@ else
     echo "Starship prompt (https://starship.rs/) isn't installed. Check dotfiles setup."
 end
 
-# thefuck setup
-if command -sq thefuck
-    thefuck --alias | source
-end
 
 # Editor
 if command -sq subl
@@ -19,7 +20,6 @@ else
     set -x EDITOR vim
 end
 set -x VISUAL $EDITOR
-
 
 
 # setup
