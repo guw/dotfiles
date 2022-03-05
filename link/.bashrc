@@ -5,6 +5,11 @@ export DOTFILES=~/.dotfiles
 PATH=$DOTFILES/bin:$PATH
 export PATH
 
+# Homebrew on macOS
+if [[ -f "/opt/homebrew/bin/brew" ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 # Source all files in "bash"
 function src() {
   local file
