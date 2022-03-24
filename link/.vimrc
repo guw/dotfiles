@@ -14,10 +14,10 @@ nnoremap k gk
 
 " Local dirs
 if !has('win32')
-  set backupdir=$DOTFILES/caches/vim
-  set directory=$DOTFILES/caches/vim
-  set undodir=$DOTFILES/caches/vim
-  let g:netrw_home = expand('$DOTFILES/caches/vim')
+  set backupdir=~/.caches/vim
+  set directory=~/.caches/vim
+  set undodir=$~/.caches/vim
+  let g:netrw_home = expand('~/.caches/vim')
 endif
 
 " Theme / Syntax highlighting
