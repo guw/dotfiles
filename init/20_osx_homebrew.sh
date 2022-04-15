@@ -5,9 +5,12 @@ is_osx || return 1
 
 # Install Homebrew.
 if [[ ! "$(type -P brew)" ]]; then
-  e_header "Installing Homebrew"
-  sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  eval $(/opt/homebrew/bin/brew shellenv)
+  #e_header "Installing Homebrew"
+  e_error "Homebrew is not installed. Please install manually"
+  e_error "Use manual way on Intel Mac's to force it into /opt/homebrew"
+  #sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  #eval $(/opt/homebrew/bin/brew shellenv)
+  return 1
 fi
 
 # Exit if, for some reason, Homebrew is not installed.
