@@ -1,9 +1,13 @@
 
-# Homebrew path on macOS
+# Homebrew path on macOS Silicon
 if test -f /opt/homebrew/bin/brew
   eval (/opt/homebrew/bin/brew shellenv)
 end
 
+# Homebrew path on macOS Intel
+if test -f /usr/local/bin/brew
+  eval (/usr/local/bin/brew shellenv)
+end
 
 # Starship prompt
 if command -sq starship
@@ -14,7 +18,9 @@ end
 
 
 # Editor
-if command -sq subl
+if command -sq code
+    set -x EDITOR "code --wait --new-window"
+else if command -sq subl
     set -x EDITOR "subl -n -w"
 else
     set -x EDITOR vim
@@ -49,4 +55,3 @@ set fish_individual_config ~/.config/fish/config_local.fish
 if test -e $fish_individual_config
   source $fish_individual_config
 end
-
