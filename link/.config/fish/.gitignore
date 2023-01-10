@@ -5,6 +5,7 @@ fish_plugins
 completions/bass*
 completions/fisher*
 completions/nvm*
+completions/falcon*
 conf.d/bass*
 conf.d/fisher*
 conf.d/nvm*
