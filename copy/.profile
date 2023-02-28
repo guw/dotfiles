@@ -24,20 +24,3 @@ fi
 # Terminal English only
 export LANG="en_US.UTF-8"
 
-# source location specific profiles if they exists
-if [ -z "${LOCATION_COUNTRY}" ]; then
-  if [ -f "${HOME}/.profile_OTHER" ]; then
-    . "${HOME}/.profile_OTHER"
-  fi
-else
-  if [ -f "${HOME}/.profile_${LOCATION_LOCALITY_SHORT:-}" ]; then
-    . "${HOME}/.profile_${LOCATION_LOCALITY_SHORT:-}"
-  elif [ -f "${HOME}/.profile_${LOCATION_COUNTRY}_${LOCATION_STATE:-}" ]; then
-    . "${HOME}/.profile_${LOCATION_COUNTRY}_${LOCATION_STATE:-}"
-  elif [ -f "${HOME}/.profile_${LOCATION_COUNTRY}" ]; then
-    . "${HOME}/.profile_${LOCATION_COUNTRY}"
-  elif [ -f "${HOME}/.profile_OTHER" ]; then
-    . "${HOME}/.profile_OTHER"
-  fi
-fi
-
