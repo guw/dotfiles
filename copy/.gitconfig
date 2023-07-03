@@ -21,7 +21,7 @@
 [merge]
     tool = vscode
 [mergetool "vscode"]
-    cmd = code --wait $MERGED
+    cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 [diff]
     tool = vscode
 [difftool "vscode"]
