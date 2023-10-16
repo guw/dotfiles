@@ -8,8 +8,8 @@
   whitespace = fix
 [branch]
   autosetuprebase = always
-[branch "master"]
-  rebase = true
+[init]
+	defaultBranch = main
 [push]
   default = simple
 [pull]
