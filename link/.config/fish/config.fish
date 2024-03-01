@@ -50,6 +50,9 @@ function _setup_fishenv
   fisher oh-my-fish/plugin-foreign-env
 end
 
+# English everywhere
+set --global --export LANG en_US.UTF-8
+
 # local overrides
 set fish_individual_config ~/.config/fish/config_local.fish
 if test -e $fish_individual_config
