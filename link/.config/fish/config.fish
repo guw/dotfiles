@@ -2,11 +2,15 @@
 # Homebrew path on macOS Silicon
 if test -f /opt/homebrew/bin/brew
   eval (/opt/homebrew/bin/brew shellenv)
+  # make sure Homebrew comes before macOS built-ins
+  fish_add_path -gmP "/opt/homebrew/bin" "/opt/homebrew/sbin";
 end
 
 # Homebrew path on macOS Intel
 if test -f /usr/local/bin/brew
   eval (/usr/local/bin/brew shellenv)
+  # make sure Homebrew comes before macOS built-ins
+  fish_add_path -gmP "/usr/local/bin" "/usr/local/sbin";
 end
 
 # Starship prompt
