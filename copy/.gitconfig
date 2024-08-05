@@ -12,19 +12,17 @@
 	defaultBranch = main
 [push]
   default = simple
-  autoSetupRemote = true
+	autoSetupRemote = true
 [pull]
   rebase = true
-[credential]
-	helper = cache --timeout=86400
 [status]
 	submodulesummary = 1
 [merge]
-    tool = vscode
+  tool = vscode
 [mergetool "vscode"]
-    cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+  cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 [diff]
-    tool = vscode
+  tool = vscode
 [difftool "vscode"]
     cmd = code --wait --diff $LOCAL $REMOTE
 [alias]
