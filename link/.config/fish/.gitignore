@@ -16,3 +16,7 @@ functions/fenv*
 functions/fisher*
 functions/nvm*
 functions/z*
+
+# local only files
+config_local.fish
+completions/local-*.fish
