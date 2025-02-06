@@ -57,8 +57,12 @@ end
 # English everywhere
 set --global --export LANG en_US.UTF-8
 
+# disable the greeting
+set fish_greeting 
+
 # local overrides
 set fish_individual_config ~/.config/fish/config_local.fish
 if test -e $fish_individual_config
   source $fish_individual_config
 end
+
