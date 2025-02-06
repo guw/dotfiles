@@ -50,14 +50,13 @@ function brew_install_recipes() {
 
 # Ensure the kegs are installed.
 kegs=(
-  homebrew/cask
-  homebrew/cask-fonts
+  #homebrew/cask
+  #homebrew/cask-fonts
 )
 brew_tap_kegs
 
 # Install recipes
 recipes=(
-  #ansible
   brew-gem
   cowsay
   fish
@@ -74,13 +73,11 @@ recipes=(
   mackup
   maven
   menumeters
-  #mosh
   nmap
   nvm
   omnidisksweeper
   ssh-copy-id
   starship
-  sublime-text
   terminal-notifier
   timelimit
 )
