@@ -51,7 +51,7 @@ function _setup_fishenv
   fisher install jethrokuan/z
   fisher install jorgebucaran/nvm.fish
   fisher install edc/bass
-  fisher oh-my-fish/plugin-foreign-env
+  fisher install oh-my-fish/plugin-foreign-env
 end
 
 # English everywhere
