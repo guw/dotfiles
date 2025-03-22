@@ -60,7 +60,7 @@ recipes=(
   brew-gem
   cowsay
   fish
-  font-meslo-lg-nerd-font
+  font-hack-nerd-font
   git
   git-extras
   htop

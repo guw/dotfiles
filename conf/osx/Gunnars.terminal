@@ -65,6 +65,15 @@
 	</data>
 	<key>CursorType</key>
 	<integer>0</integer>
+	<key>Font</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGkCwwVFlUkbnVsbNQNDg8QERIT
+	FFZOU1NpemVYTlNmRmxhZ3NWTlNOYW1lViRjbGFzcyNAJgAAAAAAABAQgAKAA18QD0hh
+	Y2tORk0tUmVndWxhctIXGBkaWiRjbGFzc25hbWVYJGNsYXNzZXNWTlNGb250ohkbWE5T
+	T2JqZWN0CBEaJCkyN0lMUVNYXmdud36FjpCSlKartr/GyQAAAAAAAAEBAAAAAAAAABwA
+	AAAAAAAAAAAAAAAAAADS
+	</data>
 	<key>FontAntialias</key>
 	<true/>
 	<key>FontHeightSpacing</key>
