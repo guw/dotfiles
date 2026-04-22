@@ -1,4 +1,4 @@
 ## Things to do
-* EditorConfig for Vim and Sublime Text
+* EditorConfig for Vim
 * BetterTouchTool prefs
 
