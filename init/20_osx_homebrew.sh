@@ -71,13 +71,13 @@ recipes=(
   locateme
   man2html
   mackup
-  maven
   menumeters
   nmap
   nvm
   omnidisksweeper
   ssh-copy-id
   starship
+  temurin
   terminal-notifier
   timelimit
 )
