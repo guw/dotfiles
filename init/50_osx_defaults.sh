@@ -121,8 +121,9 @@ sudo defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262
 # Follow the keyboard focus while zoomed in
 sudo defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
-# Disable press-and-hold for keys in favor of key repeat
-defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+# Enable press-and-hold enabled to make typing of è, ö, etc. easier on english keyboards
+# Note: It should be enabled by default, disable it for key repeat behavior.
+defaults write -g ApplePressAndHoldEnabled -bool true
 
 # Set a blazingly fast keyboard repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 2
