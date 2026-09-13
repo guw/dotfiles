@@ -20,7 +20,6 @@ else
     echo "Starship prompt (https://starship.rs/) isn't installed. Check dotfiles setup."
 end
 
-
 # Editor
 if command -sq code
     set -x EDITOR "code --wait --new-window"
